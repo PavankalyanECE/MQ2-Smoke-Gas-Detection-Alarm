@@ -1,51 +1,50 @@
 # Smoke and Gas Detection Alarm using Arduino 🚨
 
-> An Arduino-based smoke and gas detection system using an **MQ-2 gas sensor**, **Red and Green LEDs**, and a **buzzer** to provide visual and audible alerts when the detected sensor value exceeds a predefined threshold.
+> An Arduino-based smoke and gas detection system using an **MQ-2 gas sensor**, **Red and Green LEDs**, and a **buzzer** to provide visual and audible alerts when smoke or combustible gas is detected.
+
+---
+
+## 🎥 Demo Video
+
+▶️ **[Watch Project Demo on YouTube](https://youtu.be/keNhArxh3Wc?si=I9Wl2F8vSYozDkFv)**
 
 ---
 
 ## 📖 Overview
 
-The **Smoke and Gas Detection Alarm using Arduino** is a simple embedded safety system designed to detect the presence of **smoke and combustible gases** using an **MQ-2 gas sensor**.
+The **Smoke and Gas Detection Alarm using Arduino** is an embedded safety project designed to detect smoke and combustible gases using an **MQ-2 gas sensor**.
 
-The Arduino continuously reads the analog output of the MQ-2 sensor and compares the sensor value with a predefined threshold.
+The Arduino continuously monitors the analog output of the MQ-2 sensor and compares the sensor reading against a predefined threshold.
 
-* 🟢 **Normal condition:** Green LED remains ON and the buzzer is OFF.
-* 🔴 **Smoke/Gas detected:** Red LED turns ON and the buzzer is activated.
+When the environment is within the normal range, the **Green LED** remains ON. When the sensor reading exceeds the threshold, the **Red LED** and **Buzzer** are activated to provide an immediate warning.
 
-The project also displays the real-time MQ-2 sensor readings through the **Arduino Serial Monitor**, allowing the sensor response to be observed during testing.
-
----
-
-## 🎥 Project Demonstration
-
-The project can be tested using the physical Arduino circuit as well as the **Tinkercad simulation** included in this repository.
+The project is also simulated using **Tinkercad Circuits** for virtual testing and demonstration.
 
 ---
 
 ## 📸 Project Images
 
-### 🔧 Hardware Setup
+### 🔧 Hardware Implementation
 
 ![Smoke and Gas Detection Alarm Hardware](./Hardware-&-Image's/Hardware-IMG1.png)
 
-### 🛠️ Project Hardware
+### 🛠️ Project Setup
 
-![MQ-2 Smoke and Gas Detection Hardware](./Hardware-&-Image's/Hardware-IMG2.png)
+![MQ-2 Smoke and Gas Detection System](./Hardware-&-Image's/Hardware-IMG2.png)
 
 ### 💻 Tinkercad Simulation
 
-![Tinkercad Smoke Detection Simulation](./Hardware-&-Image's/TinkerCAD-Simulation.png)
+![Smoke Detection Alarm Tinkercad Simulation](./Tinkercad/Smoke%20Detection%20Alarm.png)
 
 ---
 
 ## ✨ Features
 
 * 🚨 Real-time smoke and gas detection
-* 🌫️ MQ-2 gas and smoke sensor
+* 🌫️ MQ-2 gas sensor
 * 🟢 Green LED indication for normal conditions
-* 🔴 Red LED indication for detected smoke/gas
-* 🔊 Audible alarm using a buzzer
+* 🔴 Red LED indication for smoke/gas detection
+* 🔊 Buzzer-based alarm
 * 📊 Real-time sensor readings through Serial Monitor
 * ⚙️ Adjustable detection threshold
 * 💻 Arduino-based embedded system
@@ -59,8 +58,8 @@ The project can be tested using the physical Arduino circuit as well as the **Ti
 | --------------- | ----------: | ------------------------- |
 | Arduino UNO     |           1 | Main controller           |
 | MQ-2 Gas Sensor |           1 | Smoke and gas detection   |
-| Red LED         |           1 | Danger indication         |
-| Green LED       |           1 | Safe condition indication |
+| Red LED         |           1 | Alert indication          |
+| Green LED       |           1 | Safe-condition indication |
 | Buzzer          |           1 | Audible alarm             |
 | 220Ω Resistor   |           2 | LED current limiting      |
 | Breadboard      |           1 | Circuit prototyping       |
@@ -93,13 +92,13 @@ The project can be tested using the physical Arduino circuit as well as the **Ti
 
 ## ⚙️ Working Principle
 
-The system operates in the following sequence:
+The system operates as follows:
 
-1. The **MQ-2 sensor** detects smoke or combustible gas in the surrounding environment.
-2. The sensor produces an analog output corresponding to the detected gas/smoke level.
-3. Arduino reads this analog value through **A0**.
-4. The sensor value is displayed on the **Serial Monitor**.
-5. Arduino compares the sensor reading with the predefined threshold.
+1. The **MQ-2 sensor** senses smoke and combustible gases in the surrounding environment.
+2. The sensor generates an analog output based on the detected gas/smoke level.
+3. Arduino reads the sensor value through **analog pin A0**.
+4. The sensor reading is displayed on the **Serial Monitor**.
+5. Arduino compares the reading with the predefined detection threshold.
 6. If the reading is below the threshold:
 
    * 🟢 Green LED turns ON.
@@ -110,19 +109,19 @@ The system operates in the following sequence:
    * 🟢 Green LED turns OFF.
    * 🔴 Red LED turns ON.
    * 🔊 Buzzer turns ON.
-8. The system continuously repeats this process to monitor the environment.
+8. The process continuously repeats to monitor the environment.
 
 ---
 
 ## 🚨 Detection Logic
 
-The project uses a threshold value to determine whether smoke or gas has been detected.
+The project uses a threshold-based detection method.
 
 ```cpp
 int smokeThreshold = 500;
 ```
 
-### Normal Condition
+### 🟢 Normal Condition
 
 ```text
 Sensor Value < 500
@@ -132,7 +131,7 @@ Sensor Value < 500
         └── Buzzer    → OFF
 ```
 
-### Smoke/Gas Detected
+### 🔴 Smoke/Gas Detected
 
 ```text
 Sensor Value >= 500
@@ -142,23 +141,21 @@ Sensor Value >= 500
         └── Buzzer    → ON
 ```
 
-> **Note:** The threshold value of `500` is an example used by this project. The actual sensor response depends on the MQ-2 module, environment, warm-up time, and testing conditions. Adjust the threshold according to your setup.
+> **Note:** The threshold value can be adjusted according to the sensor, environment, and testing conditions. The MQ-2 requires suitable warm-up and calibration for consistent results.
 
 ---
 
 ## 📊 Serial Monitor
 
-The Arduino continuously prints the MQ-2 sensor value to the Serial Monitor.
+The Arduino continuously sends the MQ-2 sensor readings to the Serial Monitor.
 
-Set the Serial Monitor baud rate to:
+**Baud Rate:**
 
 ```text
-9600 baud
+9600
 ```
 
-This allows you to observe how the sensor value changes when smoke or gas is introduced.
-
-Example:
+Example output:
 
 ```text
 MQ-2 Sensor Value: 287
@@ -167,13 +164,13 @@ MQ-2 Sensor Value: 521
 Smoke/Gas Detected!
 ```
 
+This allows the sensor response to be observed in real time during testing.
+
 ---
 
 ## 🧪 Tinkercad Simulation
 
-A simulated version of the project is available in the **Tinkercad** folder.
-
-### Simulation Files
+A virtual version of the smoke detection circuit is included in the repository under the **Tinkercad** folder.
 
 ```text
 Tinkercad/
@@ -181,11 +178,7 @@ Tinkercad/
 └── Smoke Detection Alarm.png
 ```
 
-### Tinkercad Simulation Preview
-
-![Tinkercad Smoke Detection Alarm](./Tinkercad/Smoke%20Detection%20Alarm.png)
-
-The Tinkercad simulation demonstrates the basic circuit operation and allows the detection logic to be tested without the physical hardware.
+The simulation can be used to understand and test the basic circuit operation before implementing the project with physical hardware.
 
 ---
 
@@ -193,54 +186,54 @@ The Tinkercad simulation demonstrates the basic circuit operation and allows the
 
 ### Arduino IDE
 
-The Arduino IDE is used to:
+Used for:
 
-* Write the Arduino program
-* Compile the source code
-* Upload the program to the Arduino UNO
-* Monitor sensor readings through the Serial Monitor
+* Writing the Arduino program
+* Compiling the source code
+* Uploading the program to Arduino UNO
+* Monitoring MQ-2 sensor readings
 
 ### Tinkercad Circuits
 
-Tinkercad is used to create and simulate the circuit virtually before or alongside physical implementation.
+Used to create and test the circuit virtually.
 
 ---
 
-## 🚀 How to Run the Project
+## 🚀 How to Run
 
-### Step 1 — Build the Circuit
+### 1. Build the Circuit
 
-Connect the Arduino, MQ-2 sensor, LEDs, resistors, and buzzer according to the circuit connection table.
+Connect the Arduino UNO, MQ-2 sensor, LEDs, resistors, and buzzer according to the circuit connection table.
 
-### Step 2 — Open the Code
+### 2. Open the Arduino Code
 
-Open:
+Navigate to:
 
 ```text
 Code/Smoke and Gas Detection Alarm using Arduino.ino
 ```
 
-using the Arduino IDE.
+Open the file using the **Arduino IDE**.
 
-### Step 3 — Select Arduino Board
+### 3. Select Board and Port
 
-In Arduino IDE:
+In Arduino IDE, select:
 
 ```text
 Tools → Board → Arduino UNO
 ```
 
-Select the appropriate COM port under:
+Then select the appropriate COM port:
 
 ```text
 Tools → Port
 ```
 
-### Step 4 — Upload the Program
+### 4. Upload the Code
 
 Upload the program to the Arduino UNO.
 
-### Step 5 — Open Serial Monitor
+### 5. Open Serial Monitor
 
 Open:
 
@@ -251,18 +244,18 @@ Tools → Serial Monitor
 Set the baud rate to:
 
 ```text
-9600
+9600 baud
 ```
 
-### Step 6 — Test the Sensor
+### 6. Test the System
 
-Expose the MQ-2 sensor to a suitable test environment and observe the sensor readings.
+Observe the MQ-2 sensor readings and test the detection response.
 
-When the reading reaches the configured threshold:
+When the sensor value exceeds the configured threshold:
 
-* 🔴 Red LED turns ON
-* 🟢 Green LED turns OFF
-* 🔊 Buzzer turns ON
+* 🔴 Red LED → ON
+* 🟢 Green LED → OFF
+* 🔊 Buzzer → ON
 
 ---
 
@@ -270,12 +263,12 @@ When the reading reaches the configured threshold:
 
 ### 🟢 Normal Condition
 
-| Output    | Status |
-| --------- | ------ |
-| Green LED | ON     |
-| Red LED   | OFF    |
-| Buzzer    | OFF    |
-| Alarm     | No     |
+| Output    | Status   |
+| --------- | -------- |
+| Green LED | ON       |
+| Red LED   | OFF      |
+| Buzzer    | OFF      |
+| Alarm     | Inactive |
 
 ### 🔴 Smoke/Gas Detected
 
@@ -285,22 +278,6 @@ When the reading reaches the configured threshold:
 | Red LED   | ON     |
 | Buzzer    | ON     |
 | Alarm     | Active |
-
----
-
-## 🖼️ Project Demonstration
-
-The repository contains photographs of the hardware implementation and simulation.
-
-### Hardware
-
-![Hardware Image 1](./Hardware-&-Image's/Hardware-IMG1.png)
-
-![Hardware Image 2](./Hardware-&-Image's/Hardware-IMG2.png)
-
-### Simulation
-
-![Tinkercad Simulation](./Hardware-&-Image's/TinkerCAD-Simulation.png)
 
 ---
 
@@ -317,22 +294,17 @@ It can respond to gases such as:
 * Hydrogen
 * Other combustible gas vapors
 
-The MQ-2 module typically provides:
+The MQ-2 module generally provides **Analog Output (AO)** and **Digital Output (DO)** along with power and ground connections.
 
-* **AO — Analog Output**
-* **DO — Digital Output**
-* **VCC — Power**
-* **GND — Ground**
+This project uses the **Analog Output** to obtain a sensor reading and perform threshold-based detection.
 
-This project uses the **Analog Output (AO)** to obtain a variable sensor reading and perform threshold-based detection in the Arduino program.
-
-> **Important:** This project is intended as an educational/prototype detection system. It should not be treated as a certified gas-leak or fire-safety device. Accurate gas concentration measurements require proper sensor calibration and an appropriate measurement methodology.
+> **Important:** The sensor reading in this project is used for threshold-based detection and should not be interpreted as an accurate gas concentration measurement in ppm. Accurate gas concentration measurements require proper calibration and an appropriate sensing model.
 
 ---
 
 ## 🎯 Applications
 
-The project can be used as a basic platform for:
+This project can serve as a basic platform for:
 
 * 🏠 Home safety monitoring
 * 🍳 Kitchen gas monitoring
@@ -341,25 +313,24 @@ The project can be used as a basic platform for:
 * 🧪 Laboratory safety demonstrations
 * 🤖 Robotics safety systems
 * 🎓 Embedded systems education
-* 🌐 Future IoT-based monitoring systems
+* 🌐 Future IoT monitoring systems
 
 ---
 
 ## 🔮 Future Improvements
 
-The project can be extended with:
+Possible improvements include:
 
-* 📟 16×2 LCD or OLED display
-* 📶 ESP32/ESP8266 wireless connectivity
-* 📱 Mobile notifications
-* 📧 Email alerts
-* 📩 SMS notifications
-* ☁️ IoT cloud monitoring
-* 📊 Real-time sensor data logging
-* 🔋 Battery-powered operation
-* 🌡️ Temperature and humidity monitoring
-* 🔔 Adjustable alarm levels
-* 📈 Web-based monitoring dashboard
+* 📟 Add a 16×2 LCD or OLED display
+* 📶 Add ESP32/ESP8266 wireless connectivity
+* 📱 Send mobile notifications
+* 📩 Add SMS alerts
+* ☁️ Connect to an IoT cloud platform
+* 📊 Store and visualize sensor data
+* 🔋 Add battery-powered operation
+* 🌡️ Integrate temperature and humidity sensors
+* 📈 Develop a web-based monitoring dashboard
+* 🔔 Implement multiple alarm thresholds
 
 ---
 
@@ -384,7 +355,7 @@ MQ2-Smoke-Gas-Detection-Alarm/
 └── README.md
 ```
 
-> `addsffva` appears to be an unused/temporary file. For a clean professional repository, I recommend deleting it.
+> `addsffva` appears to be an accidental or temporary file. For a professional repository, I recommend deleting it.
 
 ---
 
@@ -395,8 +366,8 @@ MQ2-Smoke-Gas-Detection-Alarm/
 * **Arduino IDE**
 * **Tinkercad Circuits**
 * **Embedded C / Arduino C++**
-* **Digital Electronics**
 * **Analog Sensor Interfacing**
+* **Digital Electronics**
 
 ---
 
@@ -416,4 +387,4 @@ LinkedIn: **[Lakshmi Pavan Kalyan Imandi](https://www.linkedin.com/in/pavan-kaly
 
 If you found this project useful, consider giving the repository a **⭐ Star** on GitHub.
 
-Feel free to explore the **Arduino source code, hardware implementation, and Tinkercad simulation** included in this repository.
+Feel free to explore the Arduino source code, hardware implementation, and Tinkercad simulation included in this repository.
